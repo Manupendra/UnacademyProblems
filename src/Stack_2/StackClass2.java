@@ -39,27 +39,26 @@ public class StackClass2 {
         char ch = ' ';
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
-                exp_ans.push((s.charAt(i))-'0');
+                exp_ans.push((s.charAt(i)) - '0');
             } else {
                 int val1 = exp_ans.pop();
                 int val2 = exp_ans.pop();
-                ch=s.charAt(i);
-                switch(ch)
-                {
+                ch = s.charAt(i);
+                switch (ch) {
                     case '+':
-                        exp_ans.push(val2+val1);
+                        exp_ans.push(val2 + val1);
                         break;
 
                     case '-':
-                        exp_ans.push(val2- val1);
+                        exp_ans.push(val2 - val1);
                         break;
 
                     case '/':
-                        exp_ans.push(val2/val1);
+                        exp_ans.push(val2 / val1);
                         break;
 
                     case '*':
-                        exp_ans.push(val2*val1);
+                        exp_ans.push(val2 * val1);
                         break;
                 }
 
@@ -68,19 +67,19 @@ public class StackClass2 {
         System.out.println(exp_ans.pop());
     }
 
-    static int[] stockSpan(int []a){
+    static int[] stockSpan(int[] a) {
         Stack<Integer> stack = new Stack<>();
         stack.push(0);
-        int output[]=new int[a.length];
-        output[0]=1;
+        int output[] = new int[a.length];
+        output[0] = 1;
         for (int i = 1; i < a.length; i++) {
-            while(!stack.isEmpty()&& a[i]>a[stack.peek()]){
+            while (!stack.isEmpty() && a[i] > a[stack.peek()]) {
                 stack.pop();
             }
-            if(stack.isEmpty()){
-                output[i]=i+1;
-            }else {
-                output[i]=i-stack.peek();
+            if (stack.isEmpty()) {
+                output[i] = i + 1;
+            } else {
+                output[i] = i - stack.peek();
             }
             stack.push(i);
         }
@@ -94,9 +93,9 @@ public class StackClass2 {
         //evaluatePostFixExpression("123+*8-");
 
         //Stock Span Problem
-        int[] res=stockSpan(new int[]{100,80,60,70,60,75,85});
-        for(int val:res){
-            System.out.print(val+" ");
+        int[] res = stockSpan(new int[]{100, 80, 60, 70, 60, 75, 85});
+        for (int val : res) {
+            System.out.print(val + " ");
         }
     }
 }
